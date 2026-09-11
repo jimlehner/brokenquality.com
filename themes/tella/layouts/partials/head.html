@@ -1,0 +1,36 @@
+{{- partial "analytics" . -}}
+<meta charset="utf-8">
+<title>{{site.Title}}{{if not .IsHome}} | {{.Title}}{{end}}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="{{ "favicon-64x64.png" | relURL }}" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}" />
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}" />
+<meta name="apple-mobile-web-app-title" content="{{site.Title}}" />
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}" />
+{{ if .Site.Params.icon.fontawesome }}
+<link href='{{ "/css/fa7.min.css" | relURL }}' rel="stylesheet" type="text/css">
+{{ end }}
+{{ if .Site.Params.icon.bootstrap }}
+<link href='{{ "/css/bootstrap-icons.min.css" | relURL }}' rel="stylesheet" type="text/css">
+{{ end }}
+{{ with resources.Get "css/style.css" }}
+  {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+  {{ with . | css.TailwindCSS $opts }}
+    {{ if hugo.IsDevelopment }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ else }}
+      {{ with . | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if .IsHome }}
+<link rel="stylesheet" href='{{ "/css/splide.min.css" | relURL }}'>
+{{ end }}
+
+<link rel="stylesheet" href='{{ "/css/custom.css" | relURL }}'>

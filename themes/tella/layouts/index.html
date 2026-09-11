@@ -1,0 +1,37 @@
+{{ define "meta_tags" }}
+    <meta name="description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+    <meta property="og:title" content="{{ .Site.Params.homepage_meta_tags.meta_og_title }}" />
+    <meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+    <meta property="og:url" content="{{ .Site.Params.homepage_meta_tags.meta_og_url }}" />
+    <meta property="og:image" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+    <meta property="og:description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+    <meta name="twitter:card" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_card }}" />
+    <meta name="twitter:site" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_site }}" />
+    <meta name="twitter:creator" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_creator }}" />
+{{ end }}
+
+{{ define "main" }}
+    {{- partial "alert.html" . -}}
+    {{- partial "slide.html" . -}}
+    {{- partial "strip.html" . -}}
+    {{ if ne .Site.Params.showBlog false }}
+    <div class="mx-auto my-10 max-w-6xl px-4">
+        <h2 class="text-4xl mb-6 font-bold">Blog</h2>
+        {{- partial "recent.html" . -}}
+    </div>
+    {{ end }}
+{{ end }}
+
+{{ define "scripts" }}
+    <script src="{{ "/js/splide.min.js" | relURL }}"></script>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function() {
+            new Splide( '.splide', {
+                type   : 'loop',
+                autoplay: true,
+                interval: 6000,
+                speed: 550,
+            } ).mount();
+        } );
+    </script>
+{{ end }}

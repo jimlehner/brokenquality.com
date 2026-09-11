@@ -1,0 +1,60 @@
+<footer class="bg-tlgray-100">
+  {{ if not .IsHome }}
+  <script>
+    function OnClickURL() {
+      const url = document.getElementById("url").dataset.clipboardText;
+      navigator.clipboard.writeText(url).then(function() {
+        alert('Copied the URL and title.');
+      }).catch(function(error) {
+        console.error('Copy failed', error);
+      });
+    }
+  </script>
+  {{ end }}
+  <script>
+    function toggleNav() {
+      const hamburger = document.getElementById("hamburgerbtn");
+      const overlay = document.getElementById("overlay");
+      const body = document.body;
+
+      hamburger.addEventListener("click", function () {
+        overlay.classList.toggle("open");
+        hamburger.classList.toggle("is-open");
+        body.classList.toggle("scroll-lock");
+      });
+    }
+    toggleNav();
+
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+  {{ if .Site.Params.googleFonts }}
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet" />
+  {{ else }}
+  <link href='{{ "css/webfonts.min.css" | relURL }}' rel="stylesheet" />
+  {{ end }}
+  <div class="flex items-center justify-between flex-wrap bg-gray-800 p-8 text-white">
+    <div class="items-center text-xl text-grey-900 mr-6">
+      {{ .Site.Params.site.name }}
+    </div>
+    <div class="w-full block grow lg:flex lg:items-center lg:w-auto" id="mobileMenu">
+      <div class="text-lg lg:grow">
+      </div>
+      <div class="flex flex-row items-center text-lg">
+        {{ range .Site.Menus.footer }}
+        <a href="{{ .URL }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-8">
+          {{ if not .Pre }}
+          {{ .Name }}
+          {{ else }}
+          {{ .Pre }}
+          {{ end }}
+        </a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+  <div class="copy pl-8 py-5 bg-tlgray-700 text-white text-base">
+    &copy; {{site.Title}} {{ now.Year }} All Rights Reserved.
+  </div>
+</footer>

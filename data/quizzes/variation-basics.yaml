@@ -1,0 +1,57 @@
+id: variation-basics
+title: Understanding Variation
+
+questions:
+  - id: q1
+    question: What is the primary purpose of a process behavior chart?
+    recommendation:
+      title: "A Crash Course in Variation"
+      description: "This FREE digital course serves as a broad introduction to variation and process behavior charts."
+      url: "https://store.brokenquality.com/b/crash-course"
+      priority: 1
+    options:
+      - text: Determine whether every value meets specification
+        correct: false
+      - text: Distinguish routine variation from exceptional variation
+        correct: true
+      - text: Determine whether the data are normally distributed
+        correct: false
+      - text: Calculate a process capability index
+        correct: false
+    explanation: A process behavior chart helps distinguish routine variation from signals of exceptional variation.
+
+  - id: q2
+    question: What does a specification limit describe?
+    recommendation:
+      title: "What the Spec? The practical differences between process limits and specification limits."
+      description: "This essay explains the practical differences between process limits and specification limits."
+      url: "https://store.brokenquality.com/b/what-the-spec"
+      priority: 2
+    options:
+      - text: The expected behavior of the process
+        correct: false
+      - text: The amount of routine variation
+        correct: false
+      - text: A requirement for the product or process output
+        correct: true
+      - text: The average moving range
+        correct: false
+    explanation: Specification limits define requirements or expectations for the product or output.
+
+  - id: q3
+    question: Can a value that is different from another value, by itself, prove that the process has changed?
+    recommendation:
+      title: "A Crash Course in Variation"
+      description: "This FREE digital course serves as a broad introduction to variation and process behavior charts."
+      url: "https://store.brokenquality.com/b/crash-course"
+      priority: 1
+    options:
+      - text: Yes
+        correct: false
+      - text: No
+        correct: true
+      - text: Only when the difference is large
+        correct: false
+      - text: Only when the data are normally distributed
+        correct: false
+    explanation: Numerical difference alone does not establish a change in process behavior.

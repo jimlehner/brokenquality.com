@@ -1,0 +1,33 @@
+[
+  {
+    "title": "",
+    "image": "/img/slides/understanding_var_slide.png",
+    "url": "/method",
+    "button_top": "47%",
+    "button_left": "7%"
+  },
+  {
+    "title": "",
+    "image": "/img/slides/math_matters_slide.png",
+    "color": "text-black",
+    "url": "https://themathmatters.substack.com/",
+    "button_top": "60%",
+    "button_right": "25%"
+  },
+  {
+    "title": "",
+    "image": "/img/slides/virus_of_var_slide.png",
+    "color": "text-black",
+    "url": "https://store.brokenquality.com/",
+    "button_top": "54%",
+    "button_left": "8%"
+  },
+  {
+    "title": "",
+    "image": "/img/slides/crash_course_centered_slide.png",
+    "color": "text-black",
+    "url": "https://store.brokenquality.com/b/crash-course",
+    "button_top": "70%",
+    "button_right": "23%"
+  }
+]

@@ -1,0 +1,88 @@
+{{ define "meta_tags" }}
+    {{ if .IsHome }}
+        <meta name="description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+        <meta property="og:title" content="{{ .Site.Params.homepage_meta_tags.meta_og_title }}" />
+        <meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+        <meta property="og:url" content="{{ .Site.Params.homepage_meta_tags.meta_og_url }}" />
+        <meta property="og:image" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+        <meta property="og:description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+        <meta name="twitter:card" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_card }}" />
+        <meta name="twitter:site" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_site }}" />
+        <meta name="twitter:creator" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_creator }}" />
+    {{ end }}
+{{ end }}
+
+    {{ define "main" }}
+
+    {{- partial "alert.html" . -}}
+    {{- partial "slide.html" . -}}
+    {{- partial "strip.html" . -}}
+
+    <div class="home-quote">
+        <div class="home-quote-content">
+            "A phenomenon will be said to be controlled [predictable] when, through the use of past experience,
+            we can predict, at least within limits, how the phenomenon will behave in the future."
+            <span>— Walter A. Shewhart, Economic Control of Quality of Manufactured Product</span>
+        </div>
+    </div>
+
+    <h2 class="products-title">Items of Interst</h2>
+
+    <div class="product-grid">
+
+        <a href="https://store.brokenquality.com/b/process-capability-indices" class="product-card">
+            <img src="/img/products/understanding_process_indices.png" alt="Understanding the Process 
+            Capability Indices: Terms, interpretation and context">
+        </a>
+
+        <a href="https://store.brokenquality.com/b/definition-of-quality" class="product-card">
+            <img src="/img/products/definition_of_quality.png" alt="The Definition of Quality: Clarity 
+            for modern manufacturing">
+        </a>
+
+        <a href="https://store.brokenquality.com/b/process-principle" class="product-card">
+            <img src="/img/products/process_principle.png" alt="The Process Principle: No two parts 
+            produced by the same process will ever be the same">
+        </a>
+
+        <a href="https://store.brokenquality.com/b/what-the-spec" class="product-card">
+            <img src="/img/products/what_the_spec.png" alt="What the Spec? The practical differences
+            between process limits and specification limits">
+        </a>
+
+    </div>
+
+    <div class="home-quote">
+        <div class="home-quote-content">
+            “The process principle states that the sequential outputs of a process are subject to some degree 
+            of difference, whether we can measure those differences or not.”
+            <span>— Jim Lehner, The Virus of Variation</span>
+        </div>
+    </div>
+
+    <div class="home-feature">
+        <img src="/img/home/math_matters_feature.png"
+            alt="Description of the image"
+            class="home-feature-image">
+
+        <a href="https://themathmatters.substack.com/"
+        class="home-feature-button">
+            Learn More
+        </a>
+    </div>
+
+    {{ end }}
+
+{{ define "scripts" }}
+    <script src="{{ "/js/splide.min.js" | relURL }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('.splide', {
+                type: 'loop',
+                autoplay: true,
+                interval: 6000,
+                speed: 550,
+            }).mount();
+        });
+    </script>
+{{ end }}

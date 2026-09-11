@@ -1,0 +1,84 @@
+<footer class="bg-tlgray-100">
+  {{ if not .IsHome }}
+  <script>
+    function OnClickURL() {
+      const url = document.getElementById("url").dataset.clipboardText;
+      navigator.clipboard.writeText(url).then(function() {
+        alert('Copied the URL and title.');
+      }).catch(function(error) {
+        console.error('Copy failed', error);
+      });
+    }
+  </script>
+  {{ end }}
+  <script>
+    function toggleNav() {
+      const hamburger = document.getElementById("hamburgerbtn");
+      const overlay = document.getElementById("overlay");
+      const body = document.body;
+
+      hamburger.addEventListener("click", function () {
+        overlay.classList.toggle("open");
+        hamburger.classList.toggle("is-open");
+        body.classList.toggle("scroll-lock");
+      });
+    }
+    toggleNav();
+
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
+  {{ if .Site.Params.googleFonts }}
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet" />
+  {{ else }}
+  <link href='{{ "css/webfonts.min.css" | relURL }}' rel="stylesheet" />
+  {{ end }}
+  
+  <div class="flex items-center justify-between flex-wrap bg-gray-800 p-8 text-white">
+
+  <div class="items-center text-xl text-grey-900 mr-6">
+    {{ .Site.Params.site.name }}
+  </div>
+
+  <div class="flex flex-col xl:flex-row items-center justify-center text-lg w-full">
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}"
+       class="mt-4 xl:mt-0 text-gray-300 hover:text-white mr-8">
+      {{ if not .Pre }}
+        {{ .Name }}
+      {{ else }}
+        {{ .Pre }}
+      {{ end }}
+    </a>
+    {{ end }}
+  </div>
+
+</div>
+
+<div class="copy py-5 bg-tlgray-700 text-center text-white text-base">
+    &copy; Broken Quality Press, LLC, {{ now.Year }}. All Rights Reserved.
+  </div>
+</footer>
+
+  <!-- <div class="flex items-center justify-between flex-wrap bg-gray-800 p-8 text-white">
+    <div class="items-center text-xl text-grey-900 mr-6">
+      {{ .Site.Params.site.name }}
+    </div>
+      <div class="flex flex-col xl:flex-row items-center justify-center text-lg w-full">
+        {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-8">
+          {{ if not .Pre }}
+          {{ .Name }}
+          {{ else }}
+          {{ .Pre }}
+          {{ end }}
+        </a>
+        {{ end }}
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="copy py-5 bg-tlgray-700 text-center text-white text-base">
+    &copy; Broken Quality Press, LLC, {{ now.Year }}. All Rights Reserved.
+  </div>
+</footer> -->

@@ -1,0 +1,52 @@
+baseURL = 'https://brokenquality.com/'
+locale = 'en-us'
+title = 'brokenquality.com'
+theme = "tella"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params.logo]
+main = "/img/logo/bqi_logo.png"
+alt = "The Broken Quality Initiative"
+size = "h-15"
+
+[[menus.main]]
+name = "Home"
+pageRef = "/"
+weight = 1
+
+[[menus.main]]
+name = "How is quality broken?"
+pageRef = "/howisqualitybroken"
+weight = 2
+
+[[menus.main]]
+name = "The Fix"
+pageRef = "/thefix"
+weight = 3
+
+[[menus.main]]
+name = "Apps"
+pageRef = "/webapps"
+weight = 4
+
+[[menus.main]]
+name = "Course"
+url = "https://store.brokenquality.com/b/crash-course"
+weight = 5
+
+[[menus.main]]
+name = "Store"
+URL = "https://store.brokenquality.com/"
+weight = 6
+
+[[menus.main]]
+name = "Quiz"
+pageRef = "/quiz"
+weight = 7
+
+[[menus.main]]
+name = "Contact"
+pageRef = "/contact"
+weight = 8

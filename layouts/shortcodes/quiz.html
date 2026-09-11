@@ -1,0 +1,75 @@
+<!-- <div class="quiz-user-info">
+
+    <label for="quiz-name">
+        Name
+    </label>
+
+    <input
+        type="text"
+        id="quiz-name"
+        class="quiz-name"
+        placeholder="Enter your name"
+        required
+    >
+
+    <label for="quiz-email">
+        Email
+    </label>
+
+    <input
+        type="email"
+        id="quiz-email"
+        class="quiz-email"
+        placeholder="Enter your email address"
+        required
+    >
+
+</div> -->
+
+<div class="quiz"
+     data-quiz-id="{{ .Get "id" }}">
+
+    <!-- <h2>{{ .Get "title" }}</h2> -->
+
+    {{ $quiz := index site.Data.quizzes (.Get "id") }}
+
+    {{ range $index, $question := $quiz.questions }}
+
+        <div class="quiz-question"
+                data-question-id="{{ $question.id }}"
+                data-recommendation-title="{{ $question.recommendation.title }}"
+                data-recommendation-description="{{ $question.recommendation.description }}"
+                data-recommendation-url="{{ $question.recommendation.url }}"
+                data-recommendation-priority="{{ $question.recommendation.priority }}">
+
+            <h3>
+                {{ add $index 1 }}. {{ $question.question }}
+            </h3>
+
+            <div class="quiz-options">
+
+                {{ range $optionIndex, $option := $question.options }}
+
+                    <button
+                        class="quiz-option"
+                        data-correct="{{ $option.correct }}">
+                        {{ $option.text }}
+                    </button>
+
+                {{ end }}
+
+            </div>
+
+            <div class="quiz-feedback"></div>
+
+        </div>
+
+    {{ end }}
+
+    <button class="quiz-submit">
+        Submit Quiz
+    </button>
+
+    <div class="quiz-result"></div>
+
+</div>
