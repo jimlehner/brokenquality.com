@@ -41,10 +41,24 @@
                 data-recommendation-description="{{ $question.recommendation.description }}"
                 data-recommendation-url="{{ $question.recommendation.url }}"
                 data-recommendation-priority="{{ $question.recommendation.priority }}">
-
+            
             <h3>
-                {{ add $index 1 }}. {{ $question.question }}
+                <span class="quiz-number"></span>{{ $question.question }}
             </h3>
+
+            {{ if $question.image }}
+                <img
+                    src="{{ $question.image }}"
+                    alt="Process behavior chart"
+                    class="quiz-question-image"
+                >
+            {{ end }}
+
+            {{ if $question.dataset }}
+                <h3 class="quiz-dataset">
+                    {{ $question.dataset }}
+                </h3>
+            {{ end }}
 
             <div class="quiz-options">
 

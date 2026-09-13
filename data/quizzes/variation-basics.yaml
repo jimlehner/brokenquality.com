@@ -12,13 +12,13 @@ questions:
     options:
       - text: Determine whether every value meets specification
         correct: false
-      - text: Distinguish routine variation from exceptional variation
+      - text: Distinguish signals from noise
         correct: true
       - text: Determine whether the data are normally distributed
         correct: false
       - text: Calculate a process capability index
         correct: false
-    explanation: A process behavior chart helps distinguish routine variation from signals of exceptional variation.
+    explanation: The primary purpose of a process behavior chart is to distinguish noise (common causes of routine variation) from signals (assignable causes of exceptional variation).
 
   - id: q2
     question: What does a specification limit describe?
@@ -34,12 +34,12 @@ questions:
         correct: false
       - text: A requirement for the product or process output
         correct: true
-      - text: The average moving range
+      - text: Whether future process behavior will produce nonconforming materials or parts
         correct: false
     explanation: Specification limits define requirements or expectations for the product or output.
 
   - id: q3
-    question: Can a value that is different from another value, by itself, prove that the process has changed?
+    question: Can a value that is different from another value, by itself, prove that a process has changed?
     recommendation:
       title: "A Crash Course in Variation"
       description: "This FREE digital course serves as a broad introduction to variation and process behavior charts."
@@ -54,4 +54,314 @@ questions:
         correct: false
       - text: Only when the data are normally distributed
         correct: false
-    explanation: Numerical difference alone does not establish a change in process behavior.
+    explanation: Numerical difference alone does not establish a change in process behavior. This can be summarized as "numbers that are different are not evidence of difference."
+
+  - id: q4
+    question: What are the two types of variation?
+    recommendation:
+      title: "A Crash Course in Variation"
+      description: "This FREE digital course serves as a broad introduction to variation and process behavior charts."
+      url: "https://store.brokenquality.com/b/crash-course"
+      priority: 1
+    options:
+      - text: There is only one type of variation called common causes of routine variation
+        correct: false
+      - text: Assignable causes of routine variation and common causes of exceptional variation
+        correct: false
+      - text: Common causes of routine variation and assignable causes of exceptional variation
+        correct: true
+      - text: Common causes of normal variation and special causes of controlled variation
+        correct: false
+    explanation: The two types of variation are common causes of routine variation and assignable causes of exceptional variation.
+
+  - id: q5
+    question: Who invented the process behavior chart?
+    recommendation:
+      title: "A Crash Course in Variation"
+      description: "This FREE digital course serves as a broad introduction to variation and process behavior charts."
+      url: "https://store.brokenquality.com/b/crash-course"
+      priority: 1
+    options:
+      - text: Donald J. Wheeler
+        correct: false
+      - text: Walter A. Shewhart
+        correct: true
+      - text: Genichi Taguchi
+        correct: false
+      - text: Joseph Juran
+        correct: false
+    explanation: Walter A. Shewhart created the process behavior chart at Bell Labs in the mid-1920s.
+
+  - id: q6
+    question: What is the definition of world-class quality? 
+    recommendation:
+      title: "The Definition of Quality"
+      description: "This FREE essay explores how the most widely used definition of quality, adherance to specification, undermines improvement efforts and presents the case for a more robust alternative called the Taguchi loss function."
+      url: "https://store.brokenquality.com/b/def-of-quality"
+      priority: 3
+    options:
+      - text: Fitness for use
+        correct: false
+      - text: Conformance to requirements
+        correct: false
+      - text: The degree to which a set of inherent characteristics of an object fulfills requirements.
+        correct: false
+      - text: On-target with minimum variance
+        correct: true
+    explanation: Walter A. Shewhart created the process behavior chart at Bell Labs in the mid-1920s.
+
+  - id: q7
+    question: What is the generic formula for calculating process limits?
+    recommendation:
+      title: "XmR Chart-It Web App"
+      description: "This FREE web application serves as an introduction to the most useful type of process behavior chart, the XmR chart."
+      url: "https://xmrchart.streamlit.app/""
+      priority: 2
+    options:
+      - text: Average ± 3·Sigma
+        correct: true
+      - text: Median ± 3·Sigma
+        correct: false
+      - text: Average ± 3·Stdev
+        correct: false
+      - text: Median ± 3·Range
+        correct: false
+    explanation: The generic formula for calculating process limits is Average ± 3·Sigma. Here, 3·Sigma is a generic placeholder for one of several within-subgroup measures of dispersion, NOT the standard deviation statistic.
+
+  - id: q8
+    question: What does the calculation of the standard deviation assume about a dataset?
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 2: Measures of Dispersion"
+      description: "This essay examines the role that measures of dispersion play in the calculation of process limits and explains why the standard deviation should not be used."
+      url: "https://themathmatters.substack.com/p/measures-of-dispersion"
+      priority: 2
+    options:
+      - text: Being a calculation, it assumes nothing
+        correct: false
+      - text: It assumes a dataset is heterogenous
+        correct: false
+      - text: It assumes a dataset is homogeneous
+        correct: true
+      - text: It assumes a dataset is normally distributed
+        correct: false
+    explanation: The standard deviation assumes that a dataset can be considered one large collection of homogeneous values, all obtained from the same underlying and unchanging process.
+
+  - id: q9
+    question: What is the characterization of the process behavior chart below?
+    image: "/img/quizzes/predictable_process.png"
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 2: Measures of Dispersion"
+      description: "This essay examines the role that measures of dispersion play in the calculation of process limits and explains why the standard deviation should not be used."
+      url: "https://themathmatters.substack.com/p/measures-of-dispersion"
+      priority: 1
+    options:
+      - text: Assignable
+        correct: false
+      - text: Unpredictable
+        correct: false
+      - text: Normal
+        correct: false
+      - text: Predictable
+        correct: true
+    explanation: With all of the values falling inside the process limits, the process is characterized as predictable.
+
+  - id: q10
+    question: What is the characterization of the process behavior chart below?
+    image: "/img/quizzes/unpredictable_process.png"
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 2: Measures of Dispersion"
+      description: "This essay examines the role that measures of dispersion play in the calculation of process limits and explains why the standard deviation should not be used."
+      url: "https://themathmatters.substack.com/p/measures-of-dispersion"
+      priority: 1
+    options:
+      - text: Assignable
+        correct: false
+      - text: Unpredictable
+        correct: true
+      - text: Normal
+        correct: false
+      - text: Predictable
+        correct: false
+    explanation: With multiple values falling outside the process limits, the process is characterized as unpredictable.
+
+  - id: q11
+    question: What is the process principle?
+    recommendation:
+      title: "The Process Principle"
+      description: "This essay introduces readers to the process principle and its utility as a way of thinking about processes and systems."
+      url: "https://themathmatters.substack.com/p/process-principle"
+      priority: 1
+    options:
+      - text: No two parts produced by the same process will ever be the same
+        correct: true
+      - text: The outputs of processes vary in ways that cannot be understood
+        correct: false
+      - text: Any attempts to reduce the variation exhibited by a process waste time and resources
+        correct: false
+      - text: Parts produced by the same process are more likely to be the same than different
+        correct: false
+    explanation: The process principle states that, whether we can measures them or not, no two parts produced by the same process will ever be the same. Differences will always exist.
+
+  - id: q12
+    question: What is the average moving range?
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 2: Measures of Dispersion"
+      description: "This essay examines the role that measures of dispersion play in the calculation of process limits and explains why the standard deviation should not be used."
+      url: "https://themathmatters.substack.com/p/measures-of-dispersion"
+      priority: 1
+    options:
+      - text: The average differnce between all of the values in a dataset relative to the median
+        correct: false
+      - text: The average difference between succesive values in a dataset
+        correct: true
+      - text: The difference between the largest and smallest values in a dataset
+        correct: false
+      - text: The average deviation of all the values in a dataset relative to the mean
+        correct: false
+    explanation: The average moving range is the average difference between successive values in a dataset.
+
+  - id: q13
+    question: Given the following dataset, what is the median?
+    dataset: "[2, 5, 3, 4, 1, 3, 5, 2, 8, 4, 3, 3, 4]"
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 1: Measures of Location"
+      description: "This essay explores the role that different measures of location play in the calculation of process limits with respect to their calculations.."
+      url: "https://themathmatters.substack.com/p/measures-of-location"
+      priority: 1
+    options:
+      - text: 7.0
+        correct: false
+      - text: 1.8
+        correct: false
+      - text: 3.6
+        correct: false
+      - text: 3.0
+        correct: true
+    explanation: The median of the dataset [2, 5, 3, 4, 1, 3, 5, 2, 8, 4, 3, 3, 4] is 3.0 units.
+
+  - id: q14
+    question: Given the following dataset, what is the mean?
+    dataset: "[2, 5, 3, 4, 1, 3, 5, 2, 8, 4, 3, 3, 4]"
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 1: Measures of Location"
+      description: "This essay explores the role that different measures of location play in the calculation of process limits with respect to their calculations."
+      url: "https://themathmatters.substack.com/p/measures-of-location"
+      priority: 1
+    options:
+      - text: 3.6
+        correct: true
+      - text: 3.0
+        correct: false
+      - text: 1.8
+        correct: false
+      - text: 4.0
+        correct: false
+    explanation: The mean of the dataset [2, 5, 3, 4, 1, 3, 5, 2, 8, 4, 3, 3, 4] is 3.6 units.
+
+  - id: q15
+    question: What is a moving range?
+    recommendation:
+      title: "Understanding Numerical Summaries, Part 2: Measures of Dispersion"
+      description: "This essay examines the role that measures of dispersion play in the calculation of process limits and explains why the standard deviation should not be used."
+      url: "https://themathmatters.substack.com/p/measures-of-dispersion"
+      priority: 1
+    options:
+      - text: The average deviation between successive values in a dataset
+        correct: false
+      - text: The average difference between successive values in a dataset
+        correct: false
+      - text: The absolute value of the difference between successive values in a dataset
+        correct: true
+      - text: The difference between successive values in a dataset
+        correct: false
+    explanation: A moving range is the absolute value of the difference between successive values in a dataset.
+
+  - id: q16
+    question: How do you improve an unpredictable process?
+    recommendation:
+      title: "The Process Principle"
+      description: "This essay introduces readers to the process principle and its utility as a way of thinking about processes and systems."
+      url: "https://themathmatters.substack.com/p/process-principle"
+      priority: 1
+    options:
+      - text: By eliminating the influence of assignable causes of exceptional variation
+        correct: true
+      - text: By comparing process data to the specification limits
+        correct: false
+      - text: By eliminating the influence of common causes of routine variation
+        correct: false
+      - text: By introducing new technology, new equipment, new materials, and new procedures
+        correct: false
+    explanation: To improve an unpredictable process you must elimiante the influence of assignable causes of exceptional variation.
+
+  - id: q17
+    question: How do you improve a predictable process?
+    recommendation:
+      title: "The Taguchi Loss Function"
+      description: "This essay explore how "
+      url: "https://themathmatters.substack.com/p/process-principle"
+      priority: 1
+    options:
+      - text: By comparing process data to the specification limits
+        correct: false
+      - text: By eliminating the influence of common causes of routine variation
+        correct: false
+      - text: By introducing new technology, new equipment, new materials, and new procedures
+        correct: true
+      - text: By eliminating the influence of assignable causes
+        correct: false
+    explanation: To improve a predictable process requires reengineering through the introduction of new technology, new equipment, new materials, and new procedures.
+
+  - id: q18
+    question: What is the most useful type of process behavior chart?
+    recommendation:
+      title: "XmR Chart-It"
+      description: "This FREE web application serves as an introduction to XmR charts."
+      url: "https://xmrchart.streamlit.app/"
+      priority: 1
+    options:
+      - text: Average and Range chart
+        correct: false
+      - text: XmR chart
+        correct: true
+      - text: C-chart
+        correct: false
+      - text: P-chart
+        correct: false
+    explanation: The most useful type of process behavior chart is chart of individual values and a moving range, the XmR chart.
+
+  - id: q19
+    question: Process behavior charts are also called...
+    recommendation:
+      title: "XmR Chart-It"
+      description: "This FREE web application serves as an introduction to XmR charts."
+      url: "https://xmrchart.streamlit.app/"
+      priority: 1
+    options:
+      - text: process histograms
+        correct: false
+      - text: Ishikawa diagrams
+        correct: false
+      - text: control charts
+        correct: true
+      - text: pareto charts
+        correct: false
+    explanation: Process behavior charts are also called control charts.
+
+  - id: q20
+    question: To characterize a process is to...
+    recommendation:
+      title: "The Process Principle"
+      description: "This essay introduces readers to the process principle and its utility as a way of thinking about processes and systems."
+      url: "https://themathmatters.substack.com/p/process-principle"
+      priority: 1
+    options:
+      - text: determine if the process average deviates from the mean.
+        correct: true
+      - text: determine if future process behavior is economically viable.
+        correct: false
+      - text: determine if the process will produce product within specifications.
+        correct: false
+      - text: determine if future process behavior can be predicted within limits.
+        correct: true
+    explanation: To characterize a process is to determine if future process behavior can be predicted within limits.

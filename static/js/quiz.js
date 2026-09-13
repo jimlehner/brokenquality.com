@@ -1,3 +1,4 @@
+console.log("QUIZ.JS LOADED");
 const SUPABASE_URL = "https://agyejnzrvucglgqqhlzv.supabase.co";
 const SUPABASE_KEY = "sb_publishable_UDf_B-K_mE73MwHZmWNofw_1jTuF3fS";
 
@@ -8,7 +9,53 @@ const supabaseClient = supabase.createClient(
 
 document.querySelectorAll(".quiz").forEach((quiz) => {
 
-    const questions = quiz.querySelectorAll(".quiz-question");
+    const allQuestions =
+        Array.from(quiz.querySelectorAll(".quiz-question"));
+
+        for (let i = allQuestions.length - 1; i > 0; i--) {
+
+        const j =
+            Math.floor(Math.random() * (i + 1));
+
+        [allQuestions[i], allQuestions[j]] =
+            [allQuestions[j], allQuestions[i]];
+
+    }
+
+    const selectedQuestions =
+        allQuestions.slice(0, 10);
+
+    console.log("QUIZ TEST:", allQuestions.length, selectedQuestions.length);
+    console.log("Total questions:", allQuestions.length);
+    console.log("Selected questions:", selectedQuestions.length);
+
+
+    allQuestions.forEach((question) => {
+        if (!selectedQuestions.includes(question)) {
+            question.remove();
+        }
+        
+    });
+
+    console.log("Questions remaining after removal:", quiz.querySelectorAll(".quiz-question").length);
+    console.log("Number of .quiz elements:", document.querySelectorAll(".quiz").length);
+    console.log("Quiz question elements:", quiz.querySelectorAll(".quiz-question"));
+
+    const questions =
+        quiz.querySelectorAll(".quiz-question");
+
+    for (const [index, question] of questions.entries()) {
+
+        const number =
+            question.querySelector(".quiz-number");
+
+        if (number) {
+            number.textContent =
+                `${index + 1}. `;
+        }
+
+    }
+    
     const submitButton = quiz.querySelector(".quiz-submit");
     const result = quiz.querySelector(".quiz-result");
 
@@ -37,17 +84,18 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
         // Check that every question has been answered
         const unansweredQuestions = [];
 
-        questions.forEach((question, index) => {
+        for (const [index, question] of questions.entries()) {
 
-            const selected = question.querySelector(
-                ".quiz-option.selected"
-            );
+            const selected =
+                question.querySelector(
+                    ".quiz-option.selected"
+                );
 
             if (!selected) {
                 unansweredQuestions.push(index + 1);
             }
 
-        });
+        }
 
         // Stop here if any questions are unanswered
         if (unansweredQuestions.length > 0) {
@@ -282,7 +330,7 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
                 // Quiz title
                 doc.setFontSize(18);
                 doc.setTextColor(215, 35, 35);
-                doc.text("Quiz Results", 20, y);
+                doc.text("BQI Quiz Results", 20, y);
 
                 y += 4;
 
@@ -312,12 +360,19 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
                 );
 
                 y += 15;
-
+                
                 // Questions
-                questions.forEach((question, index) => {
+                for (const [index, question] of questions.entries()) {
+                // questions.forEach((question, index) => {
 
                     const questionText =
                         question.querySelector("h3").textContent.trim();
+
+                    const questionImage =
+                        question.querySelector(".quiz-question-image");
+                    
+                    const questionDataset =
+                        question.querySelector(".quiz-dataset");
 
                     const selected =
                         question.querySelector(".quiz-option.selected");
@@ -370,6 +425,73 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
 
                     doc.setFont(undefined, "normal");
 
+                    // Question image
+                    if (questionImage) {
+
+                        const imageData =
+                            await loadImageAsDataURL(
+                                questionImage.src
+                            );
+
+                        const maxWidth = 160;
+                        const maxHeight = 80;
+
+                        let imageWidth = imageData.width;
+                        let imageHeight = imageData.height;
+
+                        const scale =
+                            Math.min(
+                                maxWidth / imageWidth,
+                                maxHeight / imageHeight,
+                                1
+                            );
+
+                        imageWidth *= scale;
+                        imageHeight *= scale;
+
+                        if (y + imageHeight > 270) {
+                            doc.addPage();
+                            y = 20;
+                        }
+
+                        doc.addImage(
+                            imageData.data,
+                            "PNG",
+                            20,
+                            y,
+                            imageWidth,
+                            imageHeight
+                        );
+
+                        y += imageHeight + 8;
+                    }
+                    
+                    if (questionDataset) {
+
+                        const datasetText =
+                            questionDataset.textContent.trim();
+
+                        const datasetLines =
+                            doc.splitTextToSize(datasetText, 160);
+
+                        if (y + datasetLines.length * 6 + 5 > 270) {
+                            doc.addPage();
+                            y = 20;
+                        }
+
+                        doc.setFontSize(12);
+                        doc.setFont(undefined, "normal");
+
+                        y += 2;
+
+                        datasetLines.forEach((line) => {
+                            doc.text(line, 25, y);
+                            y += 6;
+                        });
+
+                        y += 4;
+                    }
+
                     // User answer
                     selectedLines.forEach((line) => {
                         doc.text(line, 25, y);
@@ -381,18 +503,39 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
                         doc.text(line, 25, y);
                         y += 6;
                     });
-
+                    
                     // Status
-                    doc.text(
-                        `Result: ${isCorrect ? "Correct" : "Incorrect"}`,
-                        25,
-                        y
+                    doc.setTextColor(0, 0, 0);
+                    doc.text("Result: ", 25, y);
+
+                    const resultLabel = isCorrect ? "Correct" : "Incorrect";
+
+                    doc.setTextColor(
+                        isCorrect ? 0 : 215,
+                        isCorrect ? 150 : 35,
+                        isCorrect ? 0 : 35
                     );
 
+                    doc.text(resultLabel, 25 + doc.getTextWidth("Result: "), y);
+
+                    doc.setTextColor(0, 0, 0);
+
                     y += 10;
-                });
+
+                }
 
                 // Recommendations
+                if (score >= 8) {
+
+                    recommendations.push({
+                        title: "High score special recommendation",
+                        description: "Based on your score, we recommend you check out ",
+                        url: "https://themathmatters.substack.com/...",
+                        priority: 0
+                    });
+
+                }
+
                 if (recommendations.length > 0) {
 
                     if (y + 15 > 270) {
@@ -419,17 +562,6 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
                     y += 10;
 
                     doc.setTextColor(0, 0, 0);
-
-                    // doc.setFontSize(14);
-                    // doc.setFont(undefined, "bold");
-
-                    // doc.text(
-                    //     "Recommended Next Steps",
-                    //     20,
-                    //     y
-                    // );
-
-                    // y += 10;
 
                     doc.setFontSize(11);
                     doc.setFont(undefined, "normal");
@@ -546,10 +678,68 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
                 document.createElement("p");
 
             successMessage.textContent =
-                "Excellent work. You're ready for the next step.";
+                "Excellent work! Based on your score, we recommend you checkout the following essays.";
 
             result.appendChild(successMessage);
+
+            const specialRecommendations = [
+                {
+                    title: "Network Analysis",
+                    description: "This FREE essay presents a novel approach to SPC called network.",
+                    url: "https://store.brokenquality.com/b/network-analysis"
+                },
+                {
+                    title: "The Needle & the Cannula",
+                    description: "This FREE essay is a case study in the application of a novel SPC methodology called network analysis.",
+                    url: "https://store.brokenquality.com/b/need-cannula-case-study"
+                },
+                {
+                    title: "The Taguchi loss function",
+                    description: "This FREE essay presents the case for replacing the adherance to specification economic model of loss due to poor quality with the Taguchi loss function.",
+                    url: "https://store.brokenquality.com/b/taguchi-loss-function"
+                }
+            ];
+
+            const recommendationList =
+                document.createElement("ul");
+
+            specialRecommendations.forEach((recommendation) => {
+
+                const listItem =
+                    document.createElement("li");
+
+                const link =
+                    document.createElement("a");
+
+                link.href = recommendation.url;
+                link.textContent = recommendation.title;
+
+                const description =
+                    document.createElement("p");
+
+                description.textContent =
+                    recommendation.description;
+
+                listItem.appendChild(link);
+                listItem.appendChild(description);
+
+                recommendationList.appendChild(listItem);
+
+            });
+
+            result.appendChild(recommendationList);
         }
+
+        // } else {
+
+        //     const successMessage =
+        //         document.createElement("p");
+
+        //     successMessage.textContent =
+        //         "Excellent work! Based on your score, the following essays discussing more advanced topics are recommended.";
+
+        //     result.appendChild(successMessage);
+        // }
 
         // Prevent duplicate submissions
         submitButton.disabled = true;

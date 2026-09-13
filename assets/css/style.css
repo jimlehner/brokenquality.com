@@ -501,6 +501,19 @@ body.scroll-lock {
     margin-bottom: 2.5rem;
 }
 
+.quiz-dataset {
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.quiz-question-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
 .quiz-question:first-child {
     margin-top: 0;
 }
