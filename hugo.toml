@@ -42,8 +42,8 @@ URL = "https://store.brokenquality.com/"
 weight = 6
 
 [[menus.main]]
-name = "Quiz"
-pageRef = "/quiz"
+name = "BQI Quiz"
+pageRef = "/quiz/understanding-variation-quiz"
 weight = 7
 
 [[menus.main]]

@@ -115,7 +115,7 @@ questions:
     recommendation:
       title: "XmR Chart-It Web App"
       description: "This FREE web application serves as an introduction to the most useful type of process behavior chart, the XmR chart."
-      url: "https://xmrchart.streamlit.app/""
+      url: "https://xmrchart.streamlit.app/"
       priority: 2
     options:
       - text: Average ± 3·Sigma

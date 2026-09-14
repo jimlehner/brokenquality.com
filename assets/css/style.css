@@ -86,7 +86,7 @@ body {
   position: absolute;
   z-index: 9999;
   top: 77%;
-  left: 39.5%;
+  left: 41.5%;
   transform: translateX(-50%);
   width: fit-content;
   padding: 12px 24px;
@@ -531,7 +531,8 @@ body.scroll-lock {
 }
 
 .quiz-option:hover {
-    border-color: #d72323;
+    border-color: #000000;
+    background-color: #F2F2F2;
 }
 
 .quiz-option.selected {
@@ -593,4 +594,8 @@ body.scroll-lock {
 
 .quiz-download:hover {
     background-color: #B91C1C;
+}
+
+.recommendation-heading {
+    color: #d72323;
 }

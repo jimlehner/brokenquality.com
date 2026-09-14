@@ -629,24 +629,39 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
             });
 
         // Display recommendations
-        if (recommendations.length > 0) {
+        // Display recommendations
+        if (score >= 8) {
 
-            const recommendationHeading =
+            const successMessage =
                 document.createElement("p");
 
-            recommendationHeading.textContent =
-                "Recommended next steps:";
+            successMessage.textContent =
+                "Excellent work! Based on your score, we recommend you check out the following essays.";
 
-            result.appendChild(recommendationHeading);
+            result.appendChild(successMessage);
+
+            const specialRecommendations = [
+                {
+                    title: "Network Analysis",
+                    description: "This FREE essay presents a novel approach to SPC called network analysis.",
+                    url: "https://store.brokenquality.com/b/network-analysis"
+                },
+                {
+                    title: "The Needle & the Cannula",
+                    description: "This FREE essay is a case study in the application of a novel SPC methodology called network analysis.",
+                    url: "https://store.brokenquality.com/b/need-cannula-case-study"
+                },
+                {
+                    title: "The Taguchi Loss Function",
+                    description: "This FREE essay presents the case for replacing adherence to the specification-based economic model of loss due to poor quality with the Taguchi loss function.",
+                    url: "https://store.brokenquality.com/b/taguchi-loss-function"
+                }
+            ];
 
             const recommendationList =
                 document.createElement("ul");
 
-            recommendations.sort(
-                (a, b) => a.priority - b.priority
-            );
-
-            recommendations.forEach((recommendation) => {
+            specialRecommendations.forEach((recommendation) => {
 
                 const listItem =
                     document.createElement("li");
@@ -672,38 +687,26 @@ document.querySelectorAll(".quiz").forEach((quiz) => {
 
             result.appendChild(recommendationList);
 
-        } else {
+        } else if (recommendations.length > 0) {
 
-            const successMessage =
+            const recommendationHeading =
                 document.createElement("p");
 
-            successMessage.textContent =
-                "Excellent work! Based on your score, we recommend you checkout the following essays.";
+            recommendationHeading.classList.add("recommendation-heading");
 
-            result.appendChild(successMessage);
+            recommendationHeading.textContent =
+                "Recommended next steps:";
 
-            const specialRecommendations = [
-                {
-                    title: "Network Analysis",
-                    description: "This FREE essay presents a novel approach to SPC called network.",
-                    url: "https://store.brokenquality.com/b/network-analysis"
-                },
-                {
-                    title: "The Needle & the Cannula",
-                    description: "This FREE essay is a case study in the application of a novel SPC methodology called network analysis.",
-                    url: "https://store.brokenquality.com/b/need-cannula-case-study"
-                },
-                {
-                    title: "The Taguchi loss function",
-                    description: "This FREE essay presents the case for replacing the adherance to specification economic model of loss due to poor quality with the Taguchi loss function.",
-                    url: "https://store.brokenquality.com/b/taguchi-loss-function"
-                }
-            ];
+            result.appendChild(recommendationHeading);
 
             const recommendationList =
                 document.createElement("ul");
 
-            specialRecommendations.forEach((recommendation) => {
+            recommendations.sort(
+                (a, b) => a.priority - b.priority
+            );
+
+            recommendations.forEach((recommendation) => {
 
                 const listItem =
                     document.createElement("li");
