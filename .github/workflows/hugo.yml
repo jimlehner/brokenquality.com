@@ -55,7 +55,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "https://thebrokenqualityinitiative.github.io/brokenquality.github.io/"
+            --baseURL "https://brokenquality.com/"
           grep -n "bqi_quiz_slide" public/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
