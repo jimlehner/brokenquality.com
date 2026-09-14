@@ -1,14 +1,14 @@
 [
   {
     "title": "",
-    "image": "/img/slides/bqi_quiz_slide.png",
+    "image": "img/slides/bqi_quiz_slide.png",
     "url": "/quiz/understanding-variation-quiz",
     "button_top": "58%",
     "button_left": "7%"
   },
   {
     "title": "",
-    "image": "/img/slides/math_matters_slide.png",
+    "image": "img/slides/math_matters_slide.png",
     "color": "text-black",
     "url": "https://themathmatters.substack.com/",
     "button_top": "60%",
@@ -16,7 +16,7 @@
   },
   {
     "title": "",
-    "image": "/img/slides/virus_of_var_slide.png",
+    "image": "img/slides/virus_of_var_slide.png",
     "color": "text-black",
     "url": "https://store.brokenquality.com/",
     "button_top": "54%",
@@ -24,7 +24,7 @@
   },
   {
     "title": "",
-    "image": "/img/slides/crash_course_centered_slide.png",
+    "image": "img/slides/crash_course_centered_slide.png",
     "color": "text-black",
     "url": "https://store.brokenquality.com/b/crash-course",
     "button_top": "70%",
