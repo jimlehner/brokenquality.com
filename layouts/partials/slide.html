@@ -6,8 +6,7 @@
 
                 {{ range hugo.Data.slide }}
                 <li class="splide__slide">
-
-                    <img src="{{ .image }}" alt="{{ .alt }}" class="w-full h-auto">
+                    <img src="{{ .image | relURL }}" alt="{{ .alt }}" class="w-full h-auto">
 
                     {{ if .url }}
                     <a href="{{ .url }}"
@@ -30,8 +29,7 @@
 
                 {{ range .Site.Data.slide }}
                 <li class="splide__slide">
-
-                    <img src="{{ .image }}" alt="{{ .alt }}" class="w-full h-auto">
+                    <img src="{{ .image | relURL }}" alt="{{ .alt }}" class="w-full h-auto">
 
                     {{ if .url }}
                     <a href="{{ .url }}"
